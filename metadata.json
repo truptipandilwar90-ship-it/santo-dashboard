@@ -1,0 +1,6 @@
+{
+  "name": "Santo Domingo Country Club",
+  "description": "Official operations and administration console for Santo Domingo Country Club (Est. 1920) event planning, master calendar, golf tee sheet, sports facilities, member inbox, and finance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

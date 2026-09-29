@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Santo Domingo Country Club</title>
+
+    <meta
+      name="description"
+      content="Official operations and administration console for Santo Domingo Country Club (Est. 1920) event planning, master calendar, golf tee sheet, sports facilities, member inbox, and finance."
+    />
+
+    <meta
+      property="og:title"
+      content="Santo Domingo Country Club"
+    />
+
+    <meta
+      property="og:description"
+      content="Official operations and administration console for Santo Domingo Country Club (Est. 1920) event planning, master calendar, golf tee sheet, sports facilities, member inbox, and finance."
+    />
+
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Dancing+Script:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="bg-[#F8F9F5] text-[#1E2923] antialiased selection:bg-[#D8F29E] selection:text-[#16302B]"
+  >
+    <!-- React Application -->
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Audio device fallback polyfill for LiveKit agent when microphone is missing/blocked -->
+    <script>
+      (function() {
+        function createDummyAudioStream() {
+          try {
+            var AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return new MediaStream();
+            var ctx = new AudioCtx();
+            var osc = ctx.createOscillator();
+            var dst = ctx.createMediaStreamDestination();
+            osc.connect(dst);
+            osc.start();
+            var track = dst.stream.getAudioTracks()[0];
+            if (track) track.enabled = false;
+            return dst.stream;
+          } catch (e) {
+            return new MediaStream();
+          }
+        }
+
+        if (navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function') {
+          var origGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+          navigator.mediaDevices.getUserMedia = function(constraints) {
+            return origGetUserMedia(constraints).catch(function(err) {
+              if (
+                err &&
+                (err.name === 'NotFoundError' ||
+                 err.name === 'DevicesNotFoundError' ||
+                 err.name === 'NotAllowedError' ||
+                 err.name === 'PermissionDeniedError' ||
+                 (err.message && String(err.message).toLowerCase().includes('device not found')))
+              ) {
+                console.warn('[Smart Agent Widget] Audio input device unavailable or missing; supplying silent fallback stream.');
+                return createDummyAudioStream();
+              }
+              throw err;
+            });
+          };
+        }
+      })();
+    </script>
+
+    <!-- Deemsys Smart Agent Widget -->
+    <script
+      defer
+      src="https://deemsys-smart-agent-widget.netlify.app/embed-popup.js"
+      data-lk-sandbox-id="deemsys-test"
+      data-livekit-url="wss://golf-club-fnxetoil.livekit.cloud"
+      data-livekit-api-key="APIq8PJDKMRpriF"
+      data-livekit-api-secret="BQC3jpkG4kHwzoPW32PqeDx8y04e1fpx9X1w2fID9OKD"
+      data-agent-name="country-club-agent"
+      data-logo="/logo.jpg"
+      data-accent="#046a38"
+    ></script>
+
+    <!-- Script to observe and enforce proportional logo container fit & padding on widget load -->
+    <script>
+      (function() {
+        function enforceWidgetLogoStyles() {
+          var logoSelectors = [
+            '#lk-embed-wrapper img',
+            'div[id*="lk-embed"] img',
+            'button[id*="lk-embed"] img',
+            '[class*="lk-embed"] img',
+            '#lk-embed-trigger img',
+            'div[id*="lk"] img',
+            'button[id*="lk"] img',
+            'div[class*="lk"] img',
+            'button[class*="lk"] img'
+          ];
+          
+          var imgs = document.querySelectorAll(logoSelectors.join(', '));
+          imgs.forEach(function(img) {
+            img.style.setProperty('object-fit', 'contain', 'important');
+            img.style.setProperty('object-position', 'center', 'important');
+            img.style.setProperty('padding', '6px', 'important');
+            img.style.setProperty('box-sizing', 'border-box', 'important');
+            img.style.setProperty('border-radius', '9999px', 'important');
+            img.style.setProperty('background-color', '#ffffff', 'important');
+            img.style.setProperty('width', '100%', 'important');
+            img.style.setProperty('height', '100%', 'important');
+            img.style.setProperty('display', 'block', 'important');
+          });
+
+          var containerSelectors = [
+            '#lk-embed-wrapper',
+            'div[id*="lk-embed"]',
+            'button[id*="lk-embed"]',
+            '[class*="lk-embed"]',
+            '#lk-embed-trigger'
+          ];
+
+          var containers = document.querySelectorAll(containerSelectors.join(', '));
+          containers.forEach(function(c) {
+            c.style.setProperty('border-radius', '9999px', 'important');
+            c.style.setProperty('overflow', 'hidden', 'important');
+            c.style.setProperty('box-sizing', 'border-box', 'important');
+          });
+
+          // Check for open Shadow DOM elements if present
+          try {
+            var allElements = document.querySelectorAll('*');
+            allElements.forEach(function(el) {
+              if (el.shadowRoot) {
+                var sImgs = el.shadowRoot.querySelectorAll('img');
+                sImgs.forEach(function(img) {
+                  img.style.setProperty('object-fit', 'contain', 'important');
+                  img.style.setProperty('object-position', 'center', 'important');
+                  img.style.setProperty('padding', '6px', 'important');
+                  img.style.setProperty('box-sizing', 'border-box', 'important');
+                  img.style.setProperty('border-radius', '9999px', 'important');
+                  img.style.setProperty('background-color', '#ffffff', 'important');
+                  img.style.setProperty('width', '100%', 'important');
+                  img.style.setProperty('height', '100%', 'important');
+                  img.style.setProperty('display', 'block', 'important');
+                });
+                var sContainers = el.shadowRoot.querySelectorAll(containerSelectors.join(', '));
+                sContainers.forEach(function(c) {
+                  c.style.setProperty('border-radius', '9999px', 'important');
+                  c.style.setProperty('overflow', 'hidden', 'important');
+                  c.style.setProperty('box-sizing', 'border-box', 'important');
+                });
+              }
+            });
+          } catch (e) {
+            // Shadow DOM traversal fallback
+          }
+        }
+
+        // Run immediately and periodically as external widget script loads asynchronously
+        enforceWidgetLogoStyles();
+        var interval = setInterval(enforceWidgetLogoStyles, 200);
+        setTimeout(function() { clearInterval(interval); }, 30000);
+
+        if (window.MutationObserver) {
+          var observer = new MutationObserver(enforceWidgetLogoStyles);
+          observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+        }
+      })();
+    </script>
+  </body>
+</html>
+

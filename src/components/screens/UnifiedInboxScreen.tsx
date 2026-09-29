@@ -17,7 +17,7 @@ import { useApp } from '../../context/AppContext';
 import { ConversationItem } from '../../types';
 
 export const UnifiedInboxScreen: React.FC = () => {
-  const { conversations, navigateTo, updateConversationStatus, t, language } = useApp();
+  const { conversations, navigateTo, updateConversationStatus, t, language, tr } = useApp();
 
   const [deptFilter, setDeptFilter] = useState<string>('all');
   const [urgencyFilter, setUrgencyFilter] = useState<string>('all');
@@ -174,35 +174,35 @@ export const UnifiedInboxScreen: React.FC = () => {
                 <div className="min-w-0 space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="font-bold text-xs text-neutral-900">{conv.memberName}</span>
-                    <span className="text-[11px] text-neutral-500 font-medium font-mono">({conv.memberTier})</span>
+                    <span className="text-[11px] text-neutral-500 font-medium font-mono">({tr(conv.memberTier)})</span>
                     <span className="text-neutral-300">·</span>
                     <span className="text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2 py-0.2 rounded">
-                      {conv.department}
+                      {tr(conv.department)}
                     </span>
                     {getUrgencyBadge(conv.urgency)}
                     {getStatusBadge(conv.status)}
                   </div>
 
                   <div className="font-semibold text-xs text-neutral-800 truncate">
-                    {conv.subject}
+                    {tr(conv.subject)}
                   </div>
 
                   <p className="text-xs text-neutral-500 truncate max-w-xl">
-                    {conv.lastMessage}
+                    {tr(conv.lastMessage)}
                   </p>
 
                   {/* AI Quick Insight Tag */}
                   <div className="pt-1 flex items-center gap-1.5 text-[11px] text-emerald-900 font-medium">
                     <Sparkles className="w-3 h-3 text-emerald-600 shrink-0" />
-                    <span className="truncate italic">{language === 'es' ? 'Resumen de IA' : 'AI Summary'}: {conv.aiSummary}</span>
+                    <span className="truncate italic">{language === 'es' ? 'Resumen de IA' : 'AI Summary'}: {tr(conv.aiSummary)}</span>
                   </div>
                 </div>
               </div>
 
               {/* Right Zone: Assignee & Time */}
               <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-center text-xs text-neutral-500 shrink-0 border-t sm:border-t-0 pt-2 sm:pt-0">
-                <span className="font-mono text-[11px] text-neutral-400">{conv.lastUpdated}</span>
-                <span className="text-[11px] font-medium text-neutral-700 mt-1">{language === 'es' ? 'Asignado a' : 'Assignee'}: {conv.assignee}</span>
+                <span className="font-mono text-[11px] text-neutral-400">{tr(conv.lastUpdated)}</span>
+                <span className="text-[11px] font-medium text-neutral-700 mt-1">{language === 'es' ? 'Asignado a' : 'Assignee'}: {tr(conv.assignee)}</span>
                 <div className="hidden sm:flex items-center gap-1 text-emerald-700 font-semibold text-[11px] mt-1 hover:underline">
                   <span>{language === 'es' ? 'Ver Conversación' : 'Open Thread'}</span>
                   <ChevronRight className="w-3 h-3" />

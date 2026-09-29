@@ -15,7 +15,7 @@ import {
 import { useApp } from '../../context/AppContext';
 
 export const VenuesPackagesScreen: React.FC = () => {
-  const { facilities, t, language } = useApp();
+  const { facilities, t, language, tr } = useApp();
   const [activeTab, setActiveTab] = useState<'venues' | 'packages' | 'addons'>('venues');
   const [publishedToAi, setPublishedToAi] = useState(true);
   const [pendingChanges, setPendingChanges] = useState(false);
@@ -160,7 +160,7 @@ export const VenuesPackagesScreen: React.FC = () => {
                   </div>
                 )}
                 <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-neutral-900/80 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider">
-                  {fac.category.replace('_', ' ')}
+                  {tr(fac.category)}
                 </div>
                 {fac.hourlyRate && (
                   <div className="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-neutral-900 text-xs font-mono font-bold">
@@ -172,10 +172,10 @@ export const VenuesPackagesScreen: React.FC = () => {
               {/* Body */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4 text-xs">
                 <div>
-                  <h3 className="font-bold text-sm text-neutral-900">{fac.name}</h3>
-                  <div className="text-[11px] text-neutral-500 mt-0.5">{fac.location}</div>
+                  <h3 className="font-bold text-sm text-neutral-900">{tr(fac.name)}</h3>
+                  <div className="text-[11px] text-neutral-500 mt-0.5">{tr(fac.location)}</div>
                   <p className="text-neutral-600 text-xs mt-2 leading-relaxed line-clamp-2">
-                    {fac.description}
+                    {tr(fac.description)}
                   </p>
                 </div>
 
@@ -207,7 +207,7 @@ export const VenuesPackagesScreen: React.FC = () => {
                         key={i}
                         className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-900 text-[10px] font-medium"
                       >
-                        {amenity}
+                        {tr(amenity)}
                       </span>
                     ))}
                     {fac.amenities.length > 3 && (
@@ -234,9 +234,9 @@ export const VenuesPackagesScreen: React.FC = () => {
             >
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">
-                  {pkg.venue}
+                  {tr(pkg.venue)}
                 </span>
-                <h3 className="font-extrabold text-base text-neutral-900 mt-2">{pkg.title}</h3>
+                <h3 className="font-extrabold text-base text-neutral-900 mt-2">{tr(pkg.title)}</h3>
                 
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className="text-2xl font-extrabold font-mono text-neutral-900">${pkg.pricePerGuest}</span>
@@ -251,14 +251,14 @@ export const VenuesPackagesScreen: React.FC = () => {
                   {pkg.includes.map((inc, i) => (
                     <div key={i} className="flex items-start gap-2 text-neutral-600 leading-snug">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{inc}</span>
+                      <span>{tr(inc)}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <button
-                onClick={() => alert(language === 'es' ? `Paquete ${pkg.title} seleccionado.` : `Package ${pkg.title} selected for proposal attachment.`)}
+                onClick={() => alert(language === 'es' ? `Paquete ${tr(pkg.title)} seleccionado.` : `Package ${pkg.title} selected for proposal attachment.`)}
                 className="w-full py-2 rounded-xl border border-neutral-300 hover:bg-neutral-50 font-semibold text-neutral-800 transition-colors cursor-pointer"
               >
                 {language === 'es' ? 'Aplicar a Propuesta' : 'Apply to Next Proposal'}
@@ -284,14 +284,14 @@ export const VenuesPackagesScreen: React.FC = () => {
             <tbody className="divide-y divide-neutral-100">
               {addOns.map((add) => (
                 <tr key={add.id} className="hover:bg-neutral-50">
-                  <td className="p-3.5 font-bold text-neutral-900">{add.name}</td>
+                  <td className="p-3.5 font-bold text-neutral-900">{tr(add.name)}</td>
                   <td className="p-3.5">
                     <span className="px-2 py-0.5 rounded bg-neutral-100 font-medium text-neutral-700">
-                      {add.category}
+                      {tr(add.category)}
                     </span>
                   </td>
                   <td className="p-3.5 font-mono font-bold text-right text-neutral-900">${add.price.toLocaleString()}</td>
-                  <td className="p-3.5 text-neutral-600">{add.unit}</td>
+                  <td className="p-3.5 text-neutral-600">{tr(add.unit)}</td>
                   <td className="p-3.5 text-right">
                     <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
                       {language === 'es' ? 'Disponible' : 'Available'}

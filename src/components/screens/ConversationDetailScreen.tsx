@@ -26,7 +26,8 @@ export const ConversationDetailScreen: React.FC = () => {
     navigateTo,
     currentUser,
     t,
-    language
+    language,
+    tr
   } = useApp();
 
   const conversation = conversations.find(c => c.id === selectedConversationId) || conversations[0];
@@ -74,18 +75,18 @@ export const ConversationDetailScreen: React.FC = () => {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-xl font-bold text-neutral-900 tracking-tight">
-                {conversation.subject}
+                {tr(conversation.subject)}
               </h1>
               <span className="text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-[#F2F8F4] text-[#3B7A57] border border-[#E3EFE7]">
-                {conversation.department}
+                {tr(conversation.department)}
               </span>
             </div>
             <div className="text-xs text-neutral-500 mt-0.5 flex items-center gap-2">
               <span className="font-semibold text-neutral-800">{conversation.memberName}</span>
               <span>·</span>
-              <span>{conversation.memberTier}</span>
+              <span>{tr(conversation.memberTier)}</span>
               <span>·</span>
-              <span className="font-mono">{language === 'es' ? 'Asignado a' : 'Assignee'}: {conversation.assignee}</span>
+              <span className="font-mono">{language === 'es' ? 'Asignado a' : 'Assignee'}: {tr(conversation.assignee)}</span>
             </div>
           </div>
         </div>
@@ -130,10 +131,10 @@ export const ConversationDetailScreen: React.FC = () => {
                   }`}
                 >
                   <div className="flex items-center justify-between text-[11px] opacity-75">
-                    <span className="font-bold">{msg.sender}</span>
-                    <span className="font-mono">{msg.timestamp}</span>
+                    <span className="font-bold">{tr(msg.sender)}</span>
+                    <span className="font-mono">{tr(msg.timestamp)}</span>
                   </div>
-                  <p className="text-xs leading-relaxed whitespace-pre-wrap">{msg.content}</p>
+                  <p className="text-xs leading-relaxed whitespace-pre-wrap">{tr(msg.content)}</p>
                 </div>
               ))}
             </div>
@@ -147,7 +148,7 @@ export const ConversationDetailScreen: React.FC = () => {
                 </span>
                 <button
                   type="button"
-                  onClick={() => setReplyText(conversation.suggestedResponse)}
+                  onClick={() => setReplyText(tr(conversation.suggestedResponse))}
                   className="text-[11px] text-emerald-800 hover:underline font-semibold flex items-center gap-1 cursor-pointer"
                 >
                   <CornerDownLeft className="w-3 h-3" />
@@ -155,7 +156,7 @@ export const ConversationDetailScreen: React.FC = () => {
                 </button>
               </div>
               <p className="text-emerald-950 leading-relaxed italic bg-white/70 p-3 rounded-lg border border-emerald-200">
-                "{conversation.suggestedResponse}"
+                "{tr(conversation.suggestedResponse)}"
               </p>
             </div>
 
@@ -197,7 +198,7 @@ export const ConversationDetailScreen: React.FC = () => {
             <div className="space-y-2">
               {notesList.map((note, i) => (
                 <div key={i} className="p-3 rounded-2xl bg-[#F2F8F4] border border-[#E3EFE7] text-neutral-700 leading-snug">
-                  · {note}
+                  · {tr(note)}
                 </div>
               ))}
             </div>
@@ -235,7 +236,7 @@ export const ConversationDetailScreen: React.FC = () => {
               </span>
             </div>
             <p className="text-neutral-200 text-xs leading-relaxed bg-neutral-900/70 p-3.5 rounded-2xl border border-neutral-800">
-              {conversation.aiSummary}
+              {tr(conversation.aiSummary)}
             </p>
           </div>
 
@@ -251,7 +252,7 @@ export const ConversationDetailScreen: React.FC = () => {
                   className="p-2.5 rounded-xl bg-neutral-50 border border-neutral-200 font-medium text-neutral-800 flex items-center gap-2"
                 >
                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                  <span>{req}</span>
+                  <span>{tr(req)}</span>
                 </div>
               ))}
             </div>

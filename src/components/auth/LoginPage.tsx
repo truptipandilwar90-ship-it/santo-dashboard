@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
             <div className="mb-6 flex items-center justify-between gap-4 sm:gap-6">
               <div className="flex items-center gap-3 sm:gap-4">
                 <img
-                  src="/logo.jpg"
+                  src="/logo.png"
                   alt="Santo Domingo Country Club"
                   className="h-14 sm:h-16 w-auto object-contain shrink-0"
                   loading="eager"

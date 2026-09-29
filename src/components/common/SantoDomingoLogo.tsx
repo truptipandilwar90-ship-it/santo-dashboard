@@ -24,7 +24,7 @@ export const SantoDomingoLogo: React.FC<SantoDomingoLogoProps> = ({
   return (
     <div className={`inline-flex items-center justify-center select-none bg-transparent ${className}`}>
       <img
-        src="/logo.jpg"
+        src="/logo.png"
         alt="Santo Domingo Country Club"
         className={`${sizeClasses[size]} w-auto object-contain drop-shadow-xs`}
         loading="eager"

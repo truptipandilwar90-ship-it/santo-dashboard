@@ -33,7 +33,7 @@ export const LoginPage: React.FC = () => {
             <div className="mb-6 flex items-center justify-between gap-4 sm:gap-6">
               <div className="flex items-center gap-3 sm:gap-4">
                 <img
-                  src="/logo.png"
+                  src="/logo.jpg"
                   alt="Santo Domingo Country Club"
                   className="h-14 sm:h-16 w-auto object-contain shrink-0"
                   loading="eager"
@@ -125,7 +125,7 @@ export const LoginPage: React.FC = () => {
                 title={t.login.continueGoogle}
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M12.24 10.285V13.4h6.887C18.2 16.48 15.64 18.8 12.24 18.8c-3.76 0-6.8-3.04-6.8-6.8s3.04-6.8 6.8-6.8c1.76 0 3.36.64 4.6 1.72l2.4-2.4C17.2 2.68 14.88 1.8 12.24 1.8 6.48 1.8 1.8 6.48 1.8 1.8 6.48 1.8 12.24s4.68 10.44 10.44 10.44c6.04 0 10.04-4.24 10.04-10.24 0-.72-.08-1.4-.2-2.155H12.24z" />
+                  <path d="M12.24 10.285V13.4h6.887C18.2 16.48 15.64 18.8 12.24 18.8c-3.76 0-6.8-3.04-6.8-6.8s3.04-6.8 6.8-6.8c1.76 0 3.36.64 4.6 1.72l2.4-2.4C17.2 2.68 14.88 1.8 12.24 1.8 6.48 1.8 1.8 6.48 1.8 12.24s4.68 10.44 10.44 10.44c6.04 0 10.04-4.24 10.04-10.24 0-.72-.08-1.4-.2-2.155H12.24z" />
                 </svg>
               </button>
 

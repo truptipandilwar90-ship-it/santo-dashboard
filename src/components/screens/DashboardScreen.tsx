@@ -19,6 +19,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { SantoDomingoLogo } from '../common/SantoDomingoLogo';
 
 export const DashboardScreen: React.FC = () => {
   const {
@@ -45,19 +46,24 @@ export const DashboardScreen: React.FC = () => {
       
       {/* Welcome Showcase Banner in Login Page Mint Card Theme */}
       <div className="bg-[#F2F8F4] border border-[#E3EFE7] rounded-[32px] p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xs">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="px-3 py-1 rounded-full bg-white text-[#3B7A57] border border-[#E3EFE7] text-[11px] font-bold tracking-tight">
-              {t.dashboard.todaysOverview}
-            </span>
-            <span className="text-xs text-neutral-500 font-mono">{t.dashboard.dateDisplay}</span>
+        <div className="flex items-start gap-5">
+          <div className="bg-white p-2.5 rounded-2xl border border-[#E3EFE7] shadow-xs shrink-0 hidden sm:block">
+            <SantoDomingoLogo size="sm" />
           </div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight leading-tight">
-            {t.dashboard.welcomeTitle}
-          </h1>
-          <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-xl leading-relaxed">
-            {todayEvents.length} {t.dashboard.welcomeSubtitle}
-          </p>
+          <div>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="px-3 py-1 rounded-full bg-white text-[#3B7A57] border border-[#E3EFE7] text-[11px] font-bold tracking-tight">
+                {t.dashboard.todaysOverview}
+              </span>
+              <span className="text-xs text-neutral-500 font-mono">{t.dashboard.dateDisplay}</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight leading-tight">
+              {t.dashboard.welcomeTitle}
+            </h1>
+            <p className="text-xs sm:text-sm text-neutral-600 mt-1 max-w-xl leading-relaxed">
+              {todayEvents.length} {t.dashboard.welcomeSubtitle}
+            </p>
+          </div>
         </div>
 
         {/* Action Badges in Black & Soft Mint */}

@@ -178,16 +178,6 @@ export const TopHeader: React.FC<{ onOpenMobileMenu: () => void; onOpenNewBookin
           <span>{t.roles[currentRole]}</span>
         </div>
 
-        {/* Admin Login / Logout Switcher button */}
-        <button
-          onClick={logout}
-          title={t.header.logout}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-neutral-300 hover:border-black hover:bg-neutral-50 text-neutral-700 text-xs font-semibold transition-all cursor-pointer"
-        >
-          <LogOut className="w-3.5 h-3.5 text-neutral-500" />
-          <span className="hidden md:inline">{t.header.logout}</span>
-        </button>
-
       </div>
     </header>
   );

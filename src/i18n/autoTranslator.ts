@@ -213,6 +213,16 @@ const translationDictionary: Record<string, string> = {
   'Post-round BBQ awards buffet on the Club Lawn': 'Buffet de premiación con barbacoa en el césped del club',
   'Live scoring via TrackMan digital leaderboard': 'Puntuación en vivo a través de la tabla de clasificación digital TrackMan',
 
+  // Event Types & Member Tiers
+  'Wedding': 'Boda',
+  'Corporate Gala': 'Gala Corporativa',
+  'Executive Summit': 'Cumbre Ejecutiva',
+  'Anniversary': 'Aniversario',
+  'Golf Tournament': 'Torneo de Golf',
+  'Private Dining': 'Cena Privada',
+  'Full Athletic': 'Atleta Completo',
+  'Founding Member': 'Socio Fundador',
+
   // Add-ons
   'Late-Night Truffle Fries & Slider Bar': 'Barra de Papas Fritas con Trufa y Mini Hamburguesas Nocturna',
   'Signature Espresso Martini Rolling Trolley': 'Carrito Móvil de Espresso Martini de Autor',

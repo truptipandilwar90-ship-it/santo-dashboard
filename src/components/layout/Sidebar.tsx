@@ -206,16 +206,8 @@ export const Sidebar: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ is
           ))}
         </div>
 
-        {/* Role Switcher, Language & User Profile Footer in Mint Theme */}
+        {/* Role Switcher & User Profile Footer in Mint Theme */}
         <div className="p-3.5 border-t border-neutral-100 bg-[#F2F8F4] rounded-t-3xl space-y-2.5 m-2 mb-3 border border-[#E3EFE7]">
-          {/* Language Toggle in Sidebar */}
-          <div className="flex items-center justify-between px-1">
-            <span className="text-[10px] font-bold text-neutral-600 uppercase tracking-wider">
-              {t.common.language}
-            </span>
-            <LanguageSwitcher variant="pill" />
-          </div>
-
           {/* Quick Role Toggle Bar */}
           <div className="px-1 pt-1 text-[10px] font-bold text-neutral-600 uppercase tracking-wider flex items-center justify-between border-t border-neutral-200/60">
             <span>{t.sidebar.adminRole}</span>

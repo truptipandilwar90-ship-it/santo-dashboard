@@ -15,6 +15,10 @@ import {
   UserProfile
 } from '../types';
 
+import venueBallroomImg from '../assets/images/venue_ballroom_1790328711940.jpg';
+import venueGolfCourseImg from '../assets/images/venue_golf_course_1790328727268.jpg';
+import venueRacquetClubImg from '../assets/images/venue_racquet_club_1790328743210.jpg';
+
 export const INITIAL_USER: UserProfile = {
   id: 'usr_sarah_01',
   name: 'Eleanor Vance',
@@ -34,7 +38,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Clubhouse Level 2',
     hourlyRate: 650,
     color: '#059669', // Emerald
-    image: '/src/assets/images/venue_ballroom_1790328711940.jpg',
+    image: venueBallroomImg,
     description: 'Premier ballroom featuring vaulted hand-cut crystal chandeliers, panoramic glass views of the emerald fairways, private bridal suite, and dedicated banquet kitchen.',
     amenities: ['Private Bridal Suite', 'Yamaha Baby Grand Piano', 'Integrated 4K Projection', 'Custom Uplighting Suite', 'Dedicated Service Bar']
   },
@@ -46,7 +50,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Clubhouse West Lawn',
     hourlyRate: 420,
     color: '#10B981',
-    image: '/src/assets/images/venue_ballroom_1790328711940.jpg',
+    image: venueBallroomImg,
     description: 'Covered outdoor portico with limestone fireplace, radiant overhead heating, and manicured cocktail lawns ideal for twilight receptions.',
     amenities: ['Stone Fireplace', 'Radiant Overhead Heaters', 'Perimeter Sound System', 'Private Cocktail Lawn', 'Retractable Awnings']
   },
@@ -68,7 +72,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Par 72 / 7,240 Yards',
     hourlyRate: 180,
     color: '#15803D', // Deep Forest Green
-    image: '/src/assets/images/venue_golf_course_1790328727268.jpg',
+    image: venueGolfCourseImg,
     description: 'Championship-caliber Robert Trent Jones design featuring signature water hazards on holes 9 and 18, bentgrass greens, and full caddy services.',
     amenities: ['GPS Enabled Luxury Carts', 'Forecaddie Program', 'Halfway House Hospitality', 'Titleist Practice Range', 'TrackMan Launch Monitors']
   },
@@ -79,7 +83,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Par 31 / 2,150 Yards',
     hourlyRate: 95,
     color: '#16A34A',
-    image: '/src/assets/images/venue_golf_course_1790328727268.jpg',
+    image: venueGolfCourseImg,
     description: 'Brisk 9-hole executive course engineered for short-game mastery, family play, and twilight business rounds with pristine greens.',
     amenities: ['Walking Pull Carts', 'Practice Putting Course', 'Short Game Bunker Complex']
   },
@@ -90,7 +94,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Athletic Center East',
     hourlyRate: 45,
     color: '#0D9488', // Teal
-    image: '/src/assets/images/venue_racquet_club_1790328743210.jpg',
+    image: venueRacquetClubImg,
     description: 'Six championship Har-Tru hydro-court clay tennis surfaces equipped with tournament LED lighting and shaded player pavilions.',
     amenities: ['Hydro-Courts Har-Tru', 'Stadium Seating Court 1', 'Ball Machine Rental', 'Pro Shop Stringing Service', 'Locker Rooms']
   },
@@ -101,7 +105,7 @@ export const MOCK_FACILITIES: Facility[] = [
     location: 'Athletic Center North',
     hourlyRate: 55,
     color: '#0284C7', // Sky blue
-    image: '/src/assets/images/venue_racquet_club_1790328743210.jpg',
+    image: venueRacquetClubImg,
     description: 'Panoramic glass-walled padel courts with Mondo Supercourt turf, pro sound system, and viewing lounge.',
     amenities: ['Panoramic Glass Walls', 'Mondo Professional Turf', 'Court-side Sound', 'Equipment Rental']
   },

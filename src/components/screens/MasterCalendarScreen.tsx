@@ -321,23 +321,29 @@ export const MasterCalendarScreen: React.FC = () => {
         
         {viewMode === 'day' && (
           <div className="overflow-x-auto">
-            <div className="min-w-[900px]">
+            <div className="min-w-max">
               
               {/* Header: Facilities Columns */}
-              <div className="grid grid-cols-[100px_repeat(auto-fit,minmax(200px,1fr))] border-b border-neutral-200 bg-neutral-50/80 text-xs font-bold text-neutral-700 sticky top-0 z-10">
-                <div className="p-3 border-r border-neutral-200 flex items-center justify-center text-neutral-400">
+              <div
+                className="grid border-b border-neutral-200 bg-neutral-50/80 text-xs font-bold text-neutral-700 sticky top-0 z-10"
+                style={{
+                  gridTemplateColumns: `90px repeat(${facilitiesInView.length}, minmax(260px, 1fr))`
+                }}
+              >
+                <div className="p-3.5 border-r border-neutral-200 flex items-center justify-center text-neutral-400 shrink-0">
                   <Clock className="w-4 h-4" />
                 </div>
                 {facilitiesInView.map((facility) => (
-                  <div key={facility.id} className="p-3 border-r border-neutral-200 last:border-r-0">
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-neutral-900 truncate">{facility.name}</span>
-                      <span className="text-[10px] font-mono font-normal text-neutral-500">
+                  <div key={facility.id} className="p-3.5 border-r border-neutral-200 last:border-r-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="font-bold text-neutral-900 text-xs truncate">{facility.name}</span>
+                      <span className="text-[10px] font-mono font-medium text-neutral-500 bg-white px-2 py-0.5 rounded-full border border-neutral-200 shrink-0">
                         {facility.category === 'event_hall' ? `${facility.capacity} pax` : facility.category}
                       </span>
                     </div>
-                    <div className="text-[10px] text-neutral-500 truncate font-normal mt-0.5">
-                      {facility.location}
+                    <div className="text-[10px] text-neutral-500 truncate font-medium mt-1 flex items-center gap-1">
+                      <MapPin className="w-3 h-3 text-neutral-400 shrink-0" />
+                      <span className="truncate">{facility.location}</span>
                     </div>
                   </div>
                 ))}
@@ -351,10 +357,13 @@ export const MasterCalendarScreen: React.FC = () => {
                   return (
                     <div
                       key={time}
-                      className="grid grid-cols-[100px_repeat(auto-fit,minmax(200px,1fr))] min-h-[58px]"
+                      className="grid min-h-[64px]"
+                      style={{
+                        gridTemplateColumns: `90px repeat(${facilitiesInView.length}, minmax(260px, 1fr))`
+                      }}
                     >
                       {/* Hour Label */}
-                      <div className="p-2 border-r border-neutral-200 font-mono text-[11px] text-neutral-400 flex items-start justify-center bg-neutral-50/40">
+                      <div className="p-2.5 border-r border-neutral-200 font-mono text-[11px] text-neutral-400 flex items-start justify-center bg-neutral-50/40 shrink-0 font-semibold">
                         {time}
                       </div>
 
@@ -371,35 +380,35 @@ export const MasterCalendarScreen: React.FC = () => {
                         return (
                           <div
                             key={facility.id}
-                            className="p-1 border-r border-neutral-100 last:border-r-0 relative group hover:bg-neutral-50/70 transition-colors"
+                            className="p-2 border-r border-neutral-100 last:border-r-0 relative group hover:bg-neutral-50/70 transition-colors"
                           >
                             {matchingEvents.length > 0 ? (
-                              <div className="space-y-1">
+                              <div className="space-y-2">
                                 {matchingEvents.map((ev) => (
                                   <div
                                     key={ev.id}
                                     onClick={() => setSelectedEvent(ev)}
-                                    className={`p-2 rounded-xl text-left cursor-pointer transition-all border ${getEventCardStyle(ev)}`}
+                                    className={`p-3 rounded-xl text-left cursor-pointer transition-all border shadow-2xs ${getEventCardStyle(ev)}`}
                                   >
-                                    <div className="flex items-start justify-between gap-1">
-                                      <div className="font-bold text-xs truncate leading-tight">
+                                    <div className="flex items-start justify-between gap-1.5">
+                                      <div className="font-bold text-xs leading-snug break-words">
                                         {ev.title}
                                       </div>
                                       {ev.hasConflict && (
                                         <AlertTriangle className="w-3.5 h-3.5 text-rose-600 shrink-0 animate-bounce" />
                                       )}
                                     </div>
-                                    <div className="text-[10px] opacity-80 flex items-center gap-2 mt-1 font-mono">
-                                      <span>{ev.startTime} - {ev.endTime}</span>
+                                    <div className="text-[11px] opacity-90 flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-1.5 font-mono">
+                                      <span className="font-semibold">{ev.startTime} - {ev.endTime}</span>
                                       <span>·</span>
-                                      <span className="truncate">{ev.memberName}</span>
+                                      <span className="font-semibold truncate">{ev.memberName}</span>
                                     </div>
-                                    <div className="mt-1 flex items-center justify-between">
-                                      <span className="text-[9px] uppercase tracking-wider font-semibold">
+                                    <div className="mt-2 flex items-center justify-between gap-2 pt-1 border-t border-black/5">
+                                      <span className="text-[9px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded bg-white/70 shadow-2xs">
                                         {ev.status}
                                       </span>
                                       {ev.guestCount && (
-                                        <span className="text-[10px] font-mono opacity-80">
+                                        <span className="text-[10px] font-mono font-semibold opacity-90 shrink-0">
                                           {ev.guestCount} {language === 'es' ? 'invitados' : 'guests'}
                                         </span>
                                       )}
@@ -425,9 +434,9 @@ export const MasterCalendarScreen: React.FC = () => {
                                     type: facility.category === 'event_hall' ? 'Private Event' : 'Facility Session'
                                   });
                                 }}
-                                className="w-full h-full min-h-[44px] rounded-lg opacity-0 group-hover:opacity-100 hover:bg-emerald-50/50 border border-dashed border-emerald-300 text-emerald-700 flex items-center justify-center text-[11px] font-medium transition-opacity cursor-pointer"
+                                className="w-full h-full min-h-[48px] rounded-xl opacity-0 group-hover:opacity-100 hover:bg-emerald-50/60 border border-dashed border-emerald-300 text-emerald-700 flex items-center justify-center text-[11px] font-semibold transition-opacity cursor-pointer shadow-2xs"
                               >
-                                <Plus className="w-3 h-3 mr-1" />
+                                <Plus className="w-3.5 h-3.5 mr-1" />
                                 <span>{language === 'es' ? `Reservar ${time}` : `Book ${time}`}</span>
                               </button>
                             )}

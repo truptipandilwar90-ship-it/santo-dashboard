@@ -4,10 +4,12 @@ export type UserRole =
   | 'golf_sports'
   | 'finance'
   | 'manager'
-  | 'sysadmin';
+  | 'sysadmin'
+  | 'member';
 
 export type ScreenId =
   | 'dashboard'
+  | 'member_dashboard'
   | 'inbox'
   | 'conversation_detail'
   | 'master_calendar'

@@ -30,6 +30,12 @@ export interface Translations {
   login: {
     title: string;
     subtitle: string;
+    memberLoginTab: string;
+    staffLoginTab: string;
+    memberIdPlaceholder: string;
+    rememberMe: string;
+    memberSignInBtn: string;
+    quickMemberLogin: string;
     adminSuite: string;
     username: string;
     password: string;
@@ -70,6 +76,7 @@ export interface Translations {
   sidebar: {
     overview: string;
     dashboard: string;
+    memberDashboard: string;
     workQueue: string;
     inbox: string;
     conversationDetail: string;
@@ -171,6 +178,7 @@ export interface Translations {
     finance: string;
     front_desk: string;
     sysadmin: string;
+    member: string;
   };
   screenTitles: Record<string, string>;
 }
@@ -204,8 +212,14 @@ export const translations: Record<Language, Translations> = {
       inProgress: 'In Progress'
     },
     login: {
-      title: 'Welcome back, Admin!',
-      subtitle: 'Simplify club operations and boost productivity with Santo Domingo Country Club Admin Hub. Sign in to access your console.',
+      title: 'Santo Domingo Country Club',
+      subtitle: 'Welcome to the Exclusive Member Portal & Concierge Suite.',
+      memberLoginTab: 'Member Portal Login',
+      staffLoginTab: 'Staff Operations Login',
+      memberIdPlaceholder: 'Email or Member ID (e.g. #1029)',
+      rememberMe: 'Remember me on this device',
+      memberSignInBtn: 'Sign In to Member Portal',
+      quickMemberLogin: 'Quick Member Access',
       adminSuite: 'Admin Suite',
       username: 'Username',
       password: 'Password',
@@ -245,7 +259,8 @@ export const translations: Record<Language, Translations> = {
     },
     sidebar: {
       overview: 'Overview',
-      dashboard: 'Dashboard',
+      dashboard: 'Staff Operations',
+      memberDashboard: 'Member Portal & Traffic',
       workQueue: 'Work Queue',
       inbox: 'Unified Inbox',
       conversationDetail: 'Conversation Detail',
@@ -346,10 +361,12 @@ export const translations: Record<Language, Translations> = {
       golf_sports: 'Golf & Sports Staff',
       finance: 'Finance Specialist',
       front_desk: 'Front Desk Concierge',
-      sysadmin: 'System Administrator'
+      sysadmin: 'System Administrator',
+      member: 'Member / Country Club Member'
     },
     screenTitles: {
       dashboard: 'Dashboard Overview',
+      member_dashboard: 'Member Portal & Golf Course Traffic',
       inbox: 'Unified Work Inbox',
       conversation_detail: 'Conversation Detail',
       master_calendar: 'Master Facilities Calendar',
@@ -397,8 +414,14 @@ export const translations: Record<Language, Translations> = {
       inProgress: 'En Progreso'
     },
     login: {
-      title: '¡Bienvenido de nuevo, Admin!',
-      subtitle: 'Simplifique las operaciones y aumente la productividad con Santo Domingo Country Club Admin Hub. Inicie sesión para acceder a su consola.',
+      title: 'Santo Domingo Country Club',
+      subtitle: 'Bienvenido al Portal Exclusivo de Socios y Conserjería.',
+      memberLoginTab: 'Acceso a Portal de Socios',
+      staffLoginTab: 'Acceso a Personal de Consola',
+      memberIdPlaceholder: 'Correo electrónico o Nº de Socio (ej. #1029)',
+      rememberMe: 'Recordarme en este dispositivo',
+      memberSignInBtn: 'Ingresar al Portal de Socios',
+      quickMemberLogin: 'Acceso Rápido de Socio',
       adminSuite: 'Suite de Administración',
       username: 'Usuario',
       password: 'Contraseña',
@@ -438,7 +461,8 @@ export const translations: Record<Language, Translations> = {
     },
     sidebar: {
       overview: 'Resumen',
-      dashboard: 'Panel de Control',
+      dashboard: 'Operaciones de Personal',
+      memberDashboard: 'Portal de Socios y Tráfico',
       workQueue: 'Cola de Trabajo',
       inbox: 'Bandeja Unificada',
       conversationDetail: 'Detalle de Mensaje',
@@ -539,10 +563,12 @@ export const translations: Record<Language, Translations> = {
       golf_sports: 'Personal de Golf y Deportes',
       finance: 'Especialista en Finanzas',
       front_desk: 'Conserjería / Recepción',
-      sysadmin: 'Administrador del Sistema'
+      sysadmin: 'Administrador del Sistema',
+      member: 'Socio / Miembro del Country Club'
     },
     screenTitles: {
       dashboard: 'Resumen del Panel de Control',
+      member_dashboard: 'Portal de Socios y Tráfico de Campo',
       inbox: 'Bandeja de Trabajo Unificada',
       conversation_detail: 'Detalle de la Conversación',
       master_calendar: 'Calendario Maestro de Instalaciones',

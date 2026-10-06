@@ -6,6 +6,7 @@ import { NewBookingModal } from '../modals/NewBookingModal';
 
 // Screens
 import { DashboardScreen } from '../screens/DashboardScreen';
+import { MemberDashboardScreen } from '../screens/MemberDashboardScreen';
 import { UnifiedInboxScreen } from '../screens/UnifiedInboxScreen';
 import { ConversationDetailScreen } from '../screens/ConversationDetailScreen';
 import { MasterCalendarScreen } from '../screens/MasterCalendarScreen';
@@ -25,11 +26,21 @@ import { IntegrationsHealthScreen } from '../screens/IntegrationsHealthScreen';
 import { ConfigurationScreen } from '../screens/ConfigurationScreen';
 
 export const AppLayout: React.FC = () => {
-  const { activeScreen, language } = useApp();
+  const { activeScreen, currentRole, language } = useApp();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [newBookingModalOpen, setNewBookingModalOpen] = useState(false);
 
   const renderScreen = () => {
+    // Role-based strict isolation
+    if (currentRole === 'member') {
+      return <MemberDashboardScreen />;
+    }
+
+    // Admin / Staff view: if activeScreen is member_dashboard, redirect to Admin Dashboard
+    if (activeScreen === 'member_dashboard') {
+      return <DashboardScreen />;
+    }
+
     switch (activeScreen) {
       case 'dashboard':
         return <DashboardScreen />;

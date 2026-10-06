@@ -175,15 +175,19 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [integrations, setIntegrations] = useState<IntegrationStatus[]>(MOCK_INTEGRATIONS);
   const [config, setConfig] = useState<ClubConfigSettings>(MOCK_CONFIG);
 
-  const login = (username: string, role: UserRole = 'manager') => {
+  const login = (username: string, role: UserRole = 'member') => {
     setIsAuthenticated(true);
     setCurrentRole(role);
     setCurrentUser({
       ...INITIAL_USER,
-      name: username || 'Eleanor Vance',
+      name: username || 'Sir Arthur Sterling',
       role: role
     });
-    setActiveScreen('dashboard');
+    if (role === 'member') {
+      setActiveScreen('member_dashboard');
+    } else {
+      setActiveScreen('dashboard');
+    }
   };
 
   const logout = () => {
@@ -196,6 +200,9 @@ export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
       ...prev,
       role
     }));
+    if (role === 'member') {
+      setActiveScreen('member_dashboard');
+    }
   };
 
   const navigateTo = (screen: ScreenId, params?: { eventId?: string; convId?: string; golfId?: string; memberId?: string }) => {

@@ -7,6 +7,13 @@ import { NewBookingModal } from '../modals/NewBookingModal';
 // Screens
 import { DashboardScreen } from '../screens/DashboardScreen';
 import { MemberDashboardScreen } from '../screens/MemberDashboardScreen';
+import { MemberOverviewScreen } from '../screens/member/MemberOverviewScreen';
+import { MemberGolfScreen } from '../screens/member/MemberGolfScreen';
+import { MemberTennisScreen } from '../screens/member/MemberTennisScreen';
+import { MemberDiningScreen } from '../screens/member/MemberDiningScreen';
+import { MemberEventsScreen } from '../screens/member/MemberEventsScreen';
+import { MemberReservationsScreen } from '../screens/member/MemberReservationsScreen';
+import { MemberProfileScreen } from '../screens/member/MemberProfileScreen';
 import { UnifiedInboxScreen } from '../screens/UnifiedInboxScreen';
 import { ConversationDetailScreen } from '../screens/ConversationDetailScreen';
 import { MasterCalendarScreen } from '../screens/MasterCalendarScreen';
@@ -33,7 +40,23 @@ export const AppLayout: React.FC = () => {
   const renderScreen = () => {
     // Role-based strict isolation
     if (currentRole === 'member') {
-      return <MemberDashboardScreen />;
+      switch (activeScreen) {
+        case 'member_golf':
+          return <MemberGolfScreen />;
+        case 'member_tennis':
+          return <MemberTennisScreen />;
+        case 'member_dining':
+          return <MemberDiningScreen />;
+        case 'member_events':
+          return <MemberEventsScreen />;
+        case 'member_reservations':
+          return <MemberReservationsScreen />;
+        case 'member_profile':
+          return <MemberProfileScreen />;
+        case 'member_dashboard':
+        default:
+          return <MemberOverviewScreen />;
+      }
     }
 
     // Admin / Staff view: if activeScreen is member_dashboard, redirect to Admin Dashboard

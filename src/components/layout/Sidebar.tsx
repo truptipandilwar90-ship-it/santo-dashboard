@@ -21,7 +21,10 @@ import {
   ChevronRight,
   LogOut,
   Sparkles,
-  UserCheck
+  UserCheck,
+  User,
+  Utensils,
+  BookmarkCheck
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { ScreenId, UserRole } from '../../types';
@@ -51,9 +54,25 @@ export const Sidebar: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ is
 
   const memberNavSections: NavSection[] = [
     {
-      title: language === 'es' ? 'Portal Exclusivo de Socios' : 'Member Portal Overview',
+      title: language === 'es' ? 'Portal de Socios' : 'Member Portal',
       items: [
-        { id: 'member_dashboard', label: language === 'es' ? 'Mi Panel de Socio' : 'Member Dashboard', icon: UserCheck, highlight: true }
+        { id: 'member_dashboard', label: language === 'es' ? 'Resumen Principal' : 'Overview', icon: UserCheck },
+        { id: 'member_reservations', label: language === 'es' ? 'Mis Reservas' : 'My Reservations', icon: BookmarkCheck }
+      ]
+    },
+    {
+      title: language === 'es' ? 'Instalaciones del Club' : 'Club Facilities',
+      items: [
+        { id: 'member_golf', label: language === 'es' ? 'Campo de Golf' : 'Golf & Tee Times', icon: Flag },
+        { id: 'member_tennis', label: language === 'es' ? 'Tenis y Pádel' : 'Tennis & Padel', icon: Dumbbell },
+        { id: 'member_dining', label: language === 'es' ? 'Restaurantes y Cava' : 'Dining & Restaurants', icon: Utensils },
+        { id: 'member_events', label: language === 'es' ? 'Salones y Eventos' : 'Ballrooms & Events', icon: Building }
+      ]
+    },
+    {
+      title: language === 'es' ? 'Mi Cuenta' : 'My Account',
+      items: [
+        { id: 'member_profile', label: language === 'es' ? 'Mi Perfil' : 'My Profile', icon: User }
       ]
     }
   ];

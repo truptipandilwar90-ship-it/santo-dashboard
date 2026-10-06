@@ -10,6 +10,12 @@ export type UserRole =
 export type ScreenId =
   | 'dashboard'
   | 'member_dashboard'
+  | 'member_golf'
+  | 'member_tennis'
+  | 'member_dining'
+  | 'member_events'
+  | 'member_reservations'
+  | 'member_profile'
   | 'inbox'
   | 'conversation_detail'
   | 'master_calendar'

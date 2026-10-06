@@ -57,11 +57,43 @@ interface OnCourseGroup {
 }
 
 export const MemberDashboardScreen: React.FC = () => {
-  const { navigateTo, t, language, tr, addCalendarEvent } = useApp();
+  const { activeScreen, navigateTo, t, language, tr, addCalendarEvent } = useApp();
 
   const [activeReservationTab, setActiveReservationTab] = useState<'all' | 'golf' | 'tennis' | 'dining' | 'ballroom'>('all');
   const [selectedHole, setSelectedHole] = useState<number | null>(4);
   const [bookingModalCategory, setBookingModalCategory] = useState<'golf' | 'tennis' | 'dining' | 'ballroom' | null>(null);
+
+  React.useEffect(() => {
+    if (activeScreen === 'member_golf') {
+      setActiveReservationTab('golf');
+      setBookingModalCategory('golf');
+      setBookFacility('North Championship Course');
+    } else if (activeScreen === 'member_golf_traffic') {
+      setActiveReservationTab('golf');
+      // scroll smoothly to golf traffic section
+      const el = document.getElementById('golf-traffic-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (activeScreen === 'member_tennis' || activeScreen === 'member_padel') {
+      setActiveReservationTab('tennis');
+      setBookingModalCategory('tennis');
+      setBookFacility('Clay Tennis Court #2');
+    } else if (activeScreen === 'member_dining' || activeScreen === 'member_dining_cellar') {
+      setActiveReservationTab('dining');
+      setBookingModalCategory('dining');
+      setBookFacility('Palm Terrace & Veranda Grill');
+    } else if (activeScreen === 'member_events' || activeScreen === 'member_events_gala') {
+      setActiveReservationTab('ballroom');
+      setBookingModalCategory('ballroom');
+      setBookFacility('Grand Crystal Ballroom');
+    } else if (activeScreen === 'member_reservations') {
+      setActiveReservationTab('all');
+      const el = document.getElementById('active-reservations-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    } else if (activeScreen === 'member_profile') {
+      const el = document.getElementById('member-digital-card-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [activeScreen]);
 
   // Form states for quick booking
   const [bookDate, setBookDate] = useState('2026-10-02');
@@ -407,7 +439,7 @@ export const MemberDashboardScreen: React.FC = () => {
       </div>
 
       {/* SECTION: Golf Course Traffic / Tee-Time Monitoring */}
-      <div className="bg-white rounded-[32px] border border-[#E3EFE7] p-6 sm:p-7 shadow-xs space-y-6">
+      <div id="golf-traffic-section" className="bg-white rounded-[32px] border border-[#E3EFE7] p-6 sm:p-7 shadow-xs space-y-6">
         
         {/* Starter Telemetry Header */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-neutral-100">
@@ -629,7 +661,7 @@ export const MemberDashboardScreen: React.FC = () => {
       </div>
 
       {/* SECTION: Active & Managed Reservations List */}
-      <div className="bg-white rounded-[32px] border border-[#E3EFE7] p-6 sm:p-7 shadow-xs space-y-5">
+      <div id="active-reservations-section" className="bg-white rounded-[32px] border border-[#E3EFE7] p-6 sm:p-7 shadow-xs space-y-5">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-neutral-100">
           <div>
             <h2 className="text-xl font-extrabold text-neutral-900 tracking-tight">
